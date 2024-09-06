@@ -1,0 +1,104 @@
+{
+  "name": "Olivia Rodrigo",
+  "bio": "GUTS - out now",
+  "profilePic": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+  "socials": [
+    { "link": "https://instagram.com/oliviarodrigo", "type": "instagram" },
+    { "link": "https://tiktok.com/@livbedumb", "type": "facebook" },
+    {
+      "link": "https://www.youtube.com/channel/UCy3zgWom-5AGypGX_FVTKpg",
+      "type": "youtube"
+    },
+    {
+      "link": "https://open.spotify.com/artist/1McMsnEElThX1knmY4oliG",
+      "type": "spotify"
+    },
+    {
+      "link": "https://open.spotify.com/artist/1McMsnEElThX1knmY4oliG",
+      "type": "bandcamp"
+    },
+    {
+      "link": "https://open.spotify.com/artist/1McMsnEElThX1knmY4oliG",
+      "type": "soundcloud"
+    }
+  ],
+  "sections": [
+    {
+      "style": "list",
+      "items": [
+        {
+          "title": "stream GUTS (spilled)",
+          "img": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+          "href": "https://oliviarodrigo.lnk.to/GUTSspilled"
+        },
+        {
+          "title": "stream GUTS",
+          "img": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+          "href": "https://oliviarodrigo.lnk.to/GUTSspilled"
+        },
+        {
+          "title": "GUTS world tour",
+          "img": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+          "href": "https://oliviarodrigo.lnk.to/GUTSspilled"
+        },
+        {
+          "title": "Shop GUTS world tour merchanides",
+          "img": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+          "href": "https://oliviarodrigo.lnk.to/GUTSspilled"
+        },
+        {
+          "title": "GUYS Quiz",
+          "img": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+          "href": "https://oliviarodrigo.lnk.to/GUTSspilled"
+        },
+        {
+          "title": "Fund 4 Good",
+          "img": "https://ugc.production.linktr.ee/659ebfef-3c9c-4231-ac6f-381bc5737d19_olivia-rodrigo.jpeg?io=true&size=avatar-v3_0",
+          "href": "https://oliviarodrigo.lnk.to/GUTSspilled"
+        }
+      ]
+    },
+    {
+      "title": "GUTS vinyl",
+      "style": "grid",
+      "items": [
+        {
+          "title": "GUTS red vinyl",
+          "img": "https://ugc.production.linktr.ee/58ecb2bd-4df3-4cc1-bdc0-ac7074f1bfe1_redvinylbg.webp?io=true&size=thumbnail-grid-carousel-v1_0",
+          "href": "https://store.oliviarodrigo.com/products/g-red-vinyl"
+        },
+        {
+          "title": "GUTS white vinyl",
+          "img": "https://ugc.production.linktr.ee/e39b0106-02ca-418a-96f2-9b50ffd3345a_1STIMAGEwhitevinylbg.webp?io=true&size=thumbnail-grid-carousel-v1_0",
+          "href": "https://store.oliviarodrigo.com/products/guts-limited-edition-white-vinyl"
+        },
+        {
+          "title": "GUTS blue vinyl",
+          "img": "https://ugc.production.linktr.ee/f6f1f26c-0e15-48cd-80a2-169bef8a8a71_bluevinylbg.webp?io=true&size=thumbnail-grid-carousel-v1_0",
+          "href": "https://store.oliviarodrigo.com/products/g-red-vinyl"
+        },
+        {
+          "title": "GUTS purple vinyl",
+          "img": "https://ugc.production.linktr.ee/2a5540fe-066a-46a6-9f67-1677b0a5376f_1STIMAGEpurplevinylbg.webp?io=true&size=thumbnail-grid-carousel-v1_0",
+          "href": "https://store.oliviarodrigo.com/products/g-red-vinyl"
+        }
+      ]
+    },
+    {
+      "title": "videos",
+      "style": "list",
+      "items": [
+        {
+          "title": "GUTS videos",
+          "img": "https://ugc.production.linktr.ee/58ecb2bd-4df3-4cc1-bdc0-ac7074f1bfe1_redvinylbg.webp?io=true&size=thumbnail-grid-carousel-v1_0",
+          "href": "https://store.oliviarodrigo.com/products/g-red-vinyl"
+        },
+        {
+          "title": "Can't Catch Me Now",
+          "img": "https://ugc.production.linktr.ee/e39b0106-02ca-418a-96f2-9b50ffd3345a_1STIMAGEwhitevinylbg.webp?io=true&size=thumbnail-grid-carousel-v1_0",
+          "href": "https://store.oliviarodrigo.com/products/guts-limited-edition-white-vinyl"
+        }
+      ]
+    }
+  ]
+}

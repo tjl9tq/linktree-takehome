@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 interface LinkProps {
-  href: string;
+  href?: string;
   text: string;
   style?: "list" | "grid";
   imageSrc?: string;
@@ -17,11 +18,17 @@ const Link: React.FC<LinkProps> = ({
   imageSrc,
   imageAlt = "",
 }) => {
+  const { getComponentStyles } = useContext(ThemeContext);
+  const linkTheme = getComponentStyles("link");
+  const themeStyles = useMemo(
+    () => Object.values(linkTheme ?? {}).join(" "),
+    [linkTheme]
+  );
   const baseStyles =
-    "flex items-center text-white font-semibold transition duration-300";
+    "flex items-center text-white font-semibold transition duration-200";
   const shapeStyles = {
-    list: "rounded-full px-4 py-2",
-    grid: "rounded-lg p-4",
+    list: "px-4 py-2",
+    grid: "p-4 flex-col",
   };
 
   const shapeClass = shapeStyles[style] || shapeStyles.grid; // Default to pill if undefined
@@ -31,7 +38,7 @@ const Link: React.FC<LinkProps> = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${baseStyles} ${shapeClass} bg-blue-500 hover:bg-blue-700 transition duration-300 ${className}`}
+      className={`${baseStyles} ${shapeClass} ${themeStyles} transition duration-300 ${className}`}
     >
       {imageSrc && (
         <img
@@ -40,11 +47,11 @@ const Link: React.FC<LinkProps> = ({
           className={`${
             style === "list"
               ? "w-8 h-8 rounded-full mr-2"
-              : "w-12 h-12 rounded-lg mb-2"
+              : "h-32 rounded-lg mb-2"
           }`}
         />
       )}
-      {text}
+      <div className="text-center w-full">{text}</div>
     </a>
   );
 };

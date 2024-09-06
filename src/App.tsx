@@ -19,7 +19,7 @@ const { socials, sections, profilePic, name, bio } = data;
 
 function App() {
   return (
-    <div className="bg-blue-300 p-0">
+    <div className="bg-blue-300">
       <div className="p-6">
         <img src={profilePic} className="m-auto rounded-full h-24 " />
         <h1 className="text-xl font-bold">{name}</h1>

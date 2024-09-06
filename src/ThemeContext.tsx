@@ -5,6 +5,10 @@ interface Theme {
     color: string;
     hover: string;
     roundness: string;
+    font: string;
+  };
+  background: {
+    color: string;
   };
   [key: string]: Record<string, string>;
 }
@@ -13,7 +17,11 @@ const defaultTheme: Theme = {
   link: {
     color: "bg-blue-500",
     hover: "hover:!opacity-[0.8]",
-    roundness: "rounded-full",
+    roundness: "rounded-none",
+    font: "sans",
+  },
+  background: {
+    color: "bg-blue-300",
   },
 };
 
@@ -61,6 +69,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   }, [theme, loading]);
 
   const getComponentStyles = (component: string) => {
+    // TODO: Maybe cache and return previous value to prevent any flickering when nothing is returned
     if (!loading) return theme[component];
   };
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "./Link";
 import Picker from "./Picker";
 
@@ -24,9 +25,20 @@ const linkRoundnessOptions = [
   { value: "3", class: "rounded-2xl" },
 ];
 
+const linkFontOptions = [
+  { value: "sans", class: "font-sans" },
+  { value: "serif", class: "font-serif" },
+  { value: "mono", class: "font-mono" },
+];
+
 const ThemeEditor = () => {
+  const [minimized, setMinimized] = useState(true);
   return (
-    <div className="fixed top-1 right-1 bg-white h-1/4 w-1/4 rounded border-black border-2 py-2 px-4">
+    <div
+      className={`overflow-hidden fixed top-1 right-1 bg-white  w-[400px] rounded border-black border-2 py-1 px-4 ${
+        minimized ? "h-[28px]" : "h-[300px]"
+      }`}
+    >
       <p className="font-bold text-xs my-1">Theme Editor</p>
       <Link text="Button" />
       <Picker
@@ -44,9 +56,23 @@ const ThemeEditor = () => {
       <Picker
         component="link"
         property="roundness"
-        title="Roundess"
+        title="Roundness"
         options={linkRoundnessOptions}
       />
+      <Picker
+        component="link"
+        property="font"
+        title="Font"
+        options={linkFontOptions}
+      />
+      <button
+        onClick={() => setMinimized((prev) => !prev)}
+        className={`absolute top-0 left-2 ${
+          minimized ? "rotate-90" : "-rotate-90"
+        }`}
+      >
+        &lt;
+      </button>
     </div>
   );
 };

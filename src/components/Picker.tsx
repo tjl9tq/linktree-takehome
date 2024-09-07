@@ -44,7 +44,7 @@ const Picker = ({ component, property, title, options }: PickerProps) => {
       <div className="flex justify-center items-center">
         <button onClick={handlePrevClick}>&lt;</button>
         <div className="capitalize text-xs pt-0.5 px-3">
-          {options[optionIndex].value}
+          {options[optionIndex]?.value}
         </div>
         <button onClick={handleNextClick}>&gt;</button>
       </div>

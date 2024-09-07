@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "./Link";
 import Picker from "./Picker";
 import { Theme, ThemeContext } from "./ThemeContext";
@@ -47,6 +47,12 @@ const ThemeEditor = () => {
   const [active, setActive] = useState("button");
   const [savedThemes, setSavedThemes] = useState<null | Theme[]>(null);
   const { theme, setTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    setSavedThemes(
+      JSON.parse(localStorage.getItem("favorite-themes") ?? "null")
+    );
+  }, []);
 
   const saveToFavorites = () => {
     // TODO: Allow user to name favorites and identify themes with an id number rather than index

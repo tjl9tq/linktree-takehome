@@ -1,51 +1,55 @@
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
-import soundcloud from "../assets/soundcloud.svg";
-import bandcamp from "../assets/bandcamp.svg";
-import youtube from "../assets/youtube.svg";
-import spotify from "../assets/spotify.svg";
+import Instagram from "../assets/instagram";
+import Facebook from "../assets/facebook";
+import SoundCloud from "../assets/soundcloud";
+import BandCamp from "../assets/bandcamp";
+import YouTube from "../assets/youtube";
+import Spotify from "../assets/spotify";
+import { useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 
 const Socials = ({
   socials,
 }: {
   socials: { link: string; type: string }[];
 }) => {
+  const { getComponentStyles } = useContext(ThemeContext);
   const getSVG = (type: string) => {
     switch (type) {
       case "instagram":
-        return instagram;
+        return Instagram;
       case "facebook":
-        return facebook;
+        return Facebook;
       case "soundcloud":
-        return soundcloud;
+        return SoundCloud;
       case "bandcamp":
-        return bandcamp;
+        return BandCamp;
       case "youtube":
-        return youtube;
+        return YouTube;
       case "spotify":
-        return spotify;
+        return Spotify;
       default:
-        return "";
+        return () => null;
     }
   };
 
+  const ThemeStyles = getComponentStyles("socials");
+
   return (
     <div className="flex space-x-3 justify-center items-center my-4">
-      {socials.map((social, index) => (
-        <a
-          key={index}
-          href={social.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-link"
-        >
-          <img
-            src={getSVG(social.type)}
-            alt={social.type}
-            className="hover:scale-[.95] transition duration-200"
-          />
-        </a>
-      ))}
+      {socials.map((social, index) => {
+        const SVG = getSVG(social.type);
+        return (
+          <a
+            key={index}
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+          >
+            <SVG className={`${ThemeStyles} transition duration-200`} />
+          </a>
+        );
+      })}
     </div>
   );
 };

@@ -67,3 +67,28 @@ export const BackgroundProperties: Properties[] = [
     ],
   },
 ];
+
+export const SocialsProperties: Properties[] = [
+  {
+    component: "socials",
+    property: "color",
+    title: "Color",
+    options: [
+      { value: "black", class: "fill-black" },
+      { value: "blue", class: "fill-blue-500" },
+      { value: "red", class: "fill-red-500" },
+      { value: "yellow", class: "fill-yellow-500" },
+      { value: "orange", class: "fill-orange-500" },
+    ],
+  },
+  {
+    component: "socials",
+    property: "hover",
+    title: "Hover effect",
+    options: [
+      { value: "Opacity", class: "hover:!opacity-[0.8]" },
+      { value: "Scale bigger", class: "hover:!scale-[1.1]" },
+      { value: "Scale smaller", class: "hover:!scale-[0.9]" },
+    ],
+  },
+];

@@ -16,6 +16,10 @@ export interface Theme {
   background: {
     color: string;
   };
+  socials: {
+    color: string;
+    hover: string;
+  };
   [key: string]: Record<string, string>;
 }
 
@@ -28,6 +32,10 @@ const defaultTheme: Theme = {
   },
   background: {
     color: "bg-blue-300",
+  },
+  socials: {
+    color: "fill-black",
+    hover: "hover:!opacity-[0.8]",
   },
 };
 

@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Theme, ThemeContext } from "../ThemeContext";
-import { BackgroundProperties, ButtonProperties } from "./Properties";
+import {
+  BackgroundProperties,
+  ButtonProperties,
+  SocialsProperties,
+} from "./Properties";
 import Editor from "./Editor";
 
 // TODO: Make this draggable
@@ -57,12 +61,12 @@ const ThemeEditor = () => {
         return ButtonProperties;
       case "background":
         return BackgroundProperties;
+      case "socials":
+        return SocialsProperties;
       default:
         return null;
     }
   };
-
-  console.log(getProperties());
 
   return (
     <div

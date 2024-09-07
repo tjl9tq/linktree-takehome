@@ -1,4 +1,4 @@
-import { Section } from "./App";
+import { Section } from "../App";
 import Link from "./Link";
 
 const ListSection = ({ section }: { section: Section }) => {

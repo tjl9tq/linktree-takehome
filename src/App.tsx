@@ -1,9 +1,9 @@
 import "./App.css";
 import data from "./data.json";
-import Socials from "./Socials";
-import ListSection from "./ListSection";
-import GridSection from "./GridSection";
-import ThemeEditor from "./ThemeEditor";
+import Socials from "./components/Socials";
+import ListSection from "./components/ListSection";
+import GridSection from "./components/GridSection";
+import ThemeEditor from "./components/ThemeEditor";
 import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 

@@ -1,5 +1,5 @@
-import React, { useContext, useMemo } from "react";
-import { ThemeContext } from "./ThemeContext";
+import React, { useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 
 interface LinkProps {
   href?: string;

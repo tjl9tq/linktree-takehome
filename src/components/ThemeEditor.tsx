@@ -1,43 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import Link from "./Link";
-import Picker from "./Picker";
-import { Theme, ThemeContext } from "./ThemeContext";
-
-// TODO: Add sub-option to change color depth eg. bg-blue-200 instead of hardcoding everything to 500
-const linkColorOptions = [
-  { value: "blue", class: "bg-blue-500" },
-  { value: "red", class: "bg-red-500" },
-  { value: "yellow", class: "bg-yellow-500" },
-  { value: "orange", class: "bg-orange-500" },
-];
-
-// TODO: Build more fun custom css animations
-const linkHoverOptions = [
-  { value: "Opacity", class: "hover:!opacity-[0.8]" },
-  { value: "Scale bigger", class: "hover:!scale-[1.05]" },
-  { value: "Scale smaller", class: "hover:!scale-[0.95]" },
-  { value: "Skew Y", class: "hover:!skew-y-3" },
-];
-
-const linkRoundnessOptions = [
-  { value: "0", class: "rounded-none" },
-  { value: "1", class: "rounded-lg" },
-  { value: "2", class: "rounded-xl" },
-  { value: "3", class: "rounded-2xl" },
-];
-
-const linkFontOptions = [
-  { value: "sans", class: "font-sans" },
-  { value: "serif", class: "font-serif" },
-  { value: "mono", class: "font-mono" },
-];
-
-const backgroundColorOptions = [
-  { value: "blue", class: "bg-blue-300" },
-  { value: "red", class: "bg-red-300" },
-  { value: "yellow", class: "bg-yellow-300" },
-  { value: "orange", class: "bg-orange-300" },
-];
+import { Theme, ThemeContext } from "../ThemeContext";
+import { BackgroundProperties, ButtonProperties } from "./Properties";
+import Editor from "./Editor";
 
 // TODO: Make this draggable
 // TODO: Add options to customize Bio text
@@ -87,6 +51,19 @@ const ThemeEditor = () => {
     }
   };
 
+  const getProperties = () => {
+    switch (active) {
+      case "button":
+        return ButtonProperties;
+      case "background":
+        return BackgroundProperties;
+      default:
+        return null;
+    }
+  };
+
+  console.log(getProperties());
+
   return (
     <div
       className={`overflow-hidden fixed top-1 right-1 bg-white  w-[480px] rounded border-black border-2 py-1 px-4 ${
@@ -112,6 +89,12 @@ const ThemeEditor = () => {
           >
             Background
           </button>
+          <button
+            onClick={() => setActive("socials")}
+            className={`w-full ${active === "socials" && "bg-blue-200"}`}
+          >
+            Socials
+          </button>
           <hr className="my-2" />
 
           <button
@@ -122,50 +105,7 @@ const ThemeEditor = () => {
           </button>
         </div>
         <div className="w-1/2 px-3">
-          {active === "button" && (
-            <>
-              {/*TODO: render these from a JSON object */}
-              <Link text="Button" />
-              <Picker
-                component="link"
-                property="color"
-                title="Color"
-                options={linkColorOptions}
-              />
-              <Picker
-                component="link"
-                property="hover"
-                title="Hover Effect"
-                options={linkHoverOptions}
-              />
-              <Picker
-                component="link"
-                property="roundness"
-                title="Roundness"
-                options={linkRoundnessOptions}
-              />
-              <Picker
-                component="link"
-                property="font"
-                title="Font"
-                options={linkFontOptions}
-              />
-            </>
-          )}
-
-          {active === "background" && (
-            <>
-              <Picker
-                component="background"
-                property="color"
-                title="Color"
-                options={backgroundColorOptions}
-              />
-              {/* TODO: Upload image and set as Background */}
-            </>
-          )}
-
-          {active === "favorites" && (
+          {active === "favorites" ? (
             <>
               <button
                 onClick={() => saveToFavorites()}
@@ -180,6 +120,7 @@ const ThemeEditor = () => {
                     <span className="mx-2 text-xs font-bold">
                       Favorite {index + 1}
                     </span>
+                    {/* Make reusable button component (or start using MUI instead) */}
                     <button
                       className="text-xs bg-blue-200 px-2 py-0.5 m-0.5 rounded-lg"
                       onClick={() => loadFavorite(index)}
@@ -196,6 +137,8 @@ const ThemeEditor = () => {
                 );
               })}
             </>
+          ) : (
+            <Editor properties={getProperties()} />
           )}
           <button
             onClick={() => setMinimized((prev) => !prev)}

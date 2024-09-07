@@ -1,9 +1,9 @@
-import instagram from "./assets/instagram.svg";
-import facebook from "./assets/facebook.svg";
-import soundcloud from "./assets/soundcloud.svg";
-import bandcamp from "./assets/bandcamp.svg";
-import youtube from "./assets/youtube.svg";
-import spotify from "./assets/spotify.svg";
+import instagram from "../assets/instagram.svg";
+import facebook from "../assets/facebook.svg";
+import soundcloud from "../assets/soundcloud.svg";
+import bandcamp from "../assets/bandcamp.svg";
+import youtube from "../assets/youtube.svg";
+import spotify from "../assets/spotify.svg";
 
 const Socials = ({
   socials,

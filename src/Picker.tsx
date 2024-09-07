@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./ThemeContext";
 
 interface PickerProps {
@@ -9,9 +9,18 @@ interface PickerProps {
 }
 
 const Picker = ({ component, property, title, options }: PickerProps) => {
-  // TODO: Get existing theme and setOptionIndex to that one
   const [optionIndex, setOptionIndex] = useState(0);
-  const { setThemeProperty } = useContext(ThemeContext);
+  const { setThemeProperty, theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const currentClass = theme[component][property];
+    const currentClassIndex = options.findIndex(
+      (option) => option.class === currentClass
+    );
+    if (currentClassIndex !== -1) {
+      setOptionIndex(currentClassIndex);
+    }
+  }, [component, options, property, theme]);
 
   const handlePrevClick = () => {
     setOptionIndex((prevIndex) => {
@@ -30,14 +39,16 @@ const Picker = ({ component, property, title, options }: PickerProps) => {
   };
 
   return (
-    <>
-      <div>{title}:</div>
-      <div className="flex justify-center">
+    <div className="mt-2">
+      <div className="text-xs font-bold">{title}:</div>
+      <div className="flex justify-center items-center">
         <button onClick={handlePrevClick}>&lt;</button>
-        <div className="capitalize">{options[optionIndex].value}</div>
+        <div className="capitalize text-xs pt-0.5 px-3">
+          {options[optionIndex].value}
+        </div>
         <button onClick={handleNextClick}>&gt;</button>
       </div>
-    </>
+    </div>
   );
 };
 

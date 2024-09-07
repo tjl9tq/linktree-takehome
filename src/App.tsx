@@ -20,11 +20,11 @@ export interface Section {
 const { socials, sections, profilePic, name, bio } = data;
 
 function App() {
-  const { getComponentStyles, theme } = useContext(ThemeContext);
+  const { getComponentStyles } = useContext(ThemeContext);
 
   const themeStyles = getComponentStyles("background");
   return (
-    <div className={themeStyles}>
+    <div className={`${themeStyles ?? ""} transition duration-200`}>
       <div className="p-6">
         <img src={profilePic} className="m-auto rounded-full h-24 " />
         <h1 className="text-xl font-bold">{name}</h1>
@@ -32,11 +32,20 @@ function App() {
         <Socials socials={socials} />
         {sections.map((section: Section) => {
           if (section.style === "list") {
-            return <ListSection section={section} />;
+            return (
+              <div key={section.title}>
+                <ListSection section={section} />
+              </div>
+            );
           } else if (section.style === "grid") {
-            return <GridSection section={section} />;
+            return (
+              <div key={section.title}>
+                <GridSection section={section} />
+              </div>
+            );
           }
         })}
+        {/* TODO: Only render this for logged in users in edit mode */}
         <ThemeEditor />
       </div>
     </div>

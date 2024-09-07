@@ -3,7 +3,6 @@ import React, {
   useState,
   ReactNode,
   useEffect,
-  useMemo,
   useCallback,
 } from "react";
 
@@ -24,7 +23,7 @@ const defaultTheme: Theme = {
   link: {
     color: "bg-blue-500",
     hover: "hover:!opacity-[0.8]",
-    roundness: "rounded-none",
+    roundness: "rounded-xl",
     font: "sans",
   },
   background: {
@@ -50,6 +49,7 @@ export const ThemeContext = createContext<{
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [prev, setPrev] = useState<Theme>(defaultTheme);
   const [loading, setLoading] = useState(false);
 
   const setThemeProperty = ({
@@ -62,13 +62,16 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     value: string;
   }) => {
     setLoading(true);
-    setTheme((prev) => ({
-      ...prev,
-      [component]: {
-        ...prev[component],
-        [property]: value,
-      },
-    }));
+    setTheme((prev) => {
+      setPrev(JSON.parse(JSON.stringify(prev)));
+      return {
+        ...prev,
+        [component]: {
+          ...prev[component],
+          [property]: value,
+        },
+      };
+    });
   };
 
   useEffect(() => {
@@ -77,10 +80,10 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const getComponentStyles = useCallback(
     (component: string) => {
-      // TODO: Maybe cache and return previous value to prevent any flickering when nothing is returned
+      if (loading) return Object.values(prev[component]).join(" ");
       if (!loading) return Object.values(theme[component]).join(" ");
     },
-    [loading, theme]
+    [loading, theme, prev]
   );
 
   return (

@@ -3,7 +3,6 @@ import Link from "./Link";
 
 const GridSection = ({ section }: { section: Section }) => {
   const { title, items } = section;
-
   return (
     <div className="w-1/2 m-auto">
       {title && <div>{title}</div>}

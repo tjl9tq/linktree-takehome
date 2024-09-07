@@ -38,6 +38,10 @@ const backgroundColorOptions = [
   { value: "orange", class: "bg-orange-300" },
 ];
 
+// TODO: Make this draggable
+// TODO: Save favorite themes
+// TODO: Add options to customize Bio text
+// TODO: Add options to customize socials
 const ThemeEditor = () => {
   const [minimized, setMinimized] = useState(false);
   const [active, setActive] = useState("button");
@@ -70,6 +74,7 @@ const ThemeEditor = () => {
         <div className="w-1/2 px-3">
           {active === "button" && (
             <>
+              {/*TODO: render these from a JSON object */}
               <Link text="Button" />
               <Picker
                 component="link"
@@ -108,7 +113,6 @@ const ThemeEditor = () => {
               />
             </>
           )}
-
           <button
             onClick={() => setMinimized((prev) => !prev)}
             className={`absolute top-0 left-2 ${

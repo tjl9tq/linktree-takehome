@@ -4,6 +4,8 @@ import Socials from "./Socials";
 import ListSection from "./ListSection";
 import GridSection from "./GridSection";
 import ThemeEditor from "./ThemeEditor";
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 export interface Section {
   title?: string;
@@ -18,8 +20,11 @@ export interface Section {
 const { socials, sections, profilePic, name, bio } = data;
 
 function App() {
+  const { getComponentStyles, theme } = useContext(ThemeContext);
+
+  const themeStyles = getComponentStyles("background");
   return (
-    <div className="bg-blue-300">
+    <div className={themeStyles}>
       <div className="p-6">
         <img src={profilePic} className="m-auto rounded-full h-24 " />
         <h1 className="text-xl font-bold">{name}</h1>

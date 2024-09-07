@@ -1,4 +1,11 @@
-import React, { createContext, useState, ReactNode, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 
 interface Theme {
   link: {
@@ -34,7 +41,7 @@ interface SetThemePropertyArgs {
 export const ThemeContext = createContext<{
   theme: Theme;
   setThemeProperty: (args: SetThemePropertyArgs) => void;
-  getComponentStyles: (component: string) => Record<string, string> | void;
+  getComponentStyles: (component: string) => string | void;
 }>({
   theme: defaultTheme,
   setThemeProperty: () => {},
@@ -68,10 +75,13 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     if (loading) setLoading(false);
   }, [theme, loading]);
 
-  const getComponentStyles = (component: string) => {
-    // TODO: Maybe cache and return previous value to prevent any flickering when nothing is returned
-    if (!loading) return theme[component];
-  };
+  const getComponentStyles = useCallback(
+    (component: string) => {
+      // TODO: Maybe cache and return previous value to prevent any flickering when nothing is returned
+      if (!loading) return Object.values(theme[component]).join(" ");
+    },
+    [loading, theme]
+  );
 
   return (
     <ThemeContext.Provider

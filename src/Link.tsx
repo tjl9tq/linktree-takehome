@@ -19,11 +19,7 @@ const Link: React.FC<LinkProps> = ({
   imageAlt = "",
 }) => {
   const { getComponentStyles } = useContext(ThemeContext);
-  const linkTheme = getComponentStyles("link");
-  const themeStyles = useMemo(
-    () => Object.values(linkTheme ?? {}).join(" "),
-    [linkTheme]
-  );
+  const themeStyles = getComponentStyles("link");
   const baseStyles =
     "flex items-center text-white font-semibold transition duration-200";
   const shapeStyles = {

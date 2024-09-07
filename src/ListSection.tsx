@@ -5,8 +5,8 @@ const ListSection = ({ section }: { section: Section }) => {
   const { title, items } = section;
 
   return (
-    <div className="space-y-4 w-1/2 m-auto my-6">
-      {title && <div>{title}</div>}
+    <div className="space-y-4 w-1/2 max-w-lg m-auto my-6">
+      {title && <div className="font-bold">{title}</div>}
       {items.map((link) => {
         const { title, img, href } = link;
         return (

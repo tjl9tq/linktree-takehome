@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from "react";
 
-interface Theme {
+export interface Theme {
   link: {
     color: string;
     hover: string;
@@ -41,10 +41,12 @@ export const ThemeContext = createContext<{
   theme: Theme;
   setThemeProperty: (args: SetThemePropertyArgs) => void;
   getComponentStyles: (component: string) => string | void;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }>({
   theme: defaultTheme,
   setThemeProperty: () => {},
   getComponentStyles: () => {},
+  setTheme: () => {},
 });
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -88,7 +90,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <ThemeContext.Provider
-      value={{ theme, setThemeProperty, getComponentStyles }}
+      value={{ theme, setThemeProperty, getComponentStyles, setTheme }}
     >
       {children}
     </ThemeContext.Provider>
